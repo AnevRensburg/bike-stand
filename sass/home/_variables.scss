@@ -1,0 +1,27 @@
+// COLOURS
+
+$colour-primary:#f58a59;
+$colour-primary-light:#f1ad8e;
+$colour-primary-dark:#f66826;
+
+$colour-grey-light-1:#fafafa;
+
+$colour-grey-dark:#9c9c9c;
+$colour-white:#fff;
+$colour-black:#000;
+
+// GRID
+
+$row-width: 114rem;
+$gutter-vertical: 8rem;
+$gutter-horizontal-fake: 8rem;
+$gutter-horizontal: 6rem;
+
+
+@mixin clearfix {
+    &::after{
+        content: "";
+        display: table;
+        clear: both;
+    }
+}

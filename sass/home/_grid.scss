@@ -1,0 +1,69 @@
+.row{
+    max-width: $row-width;
+    margin: 0 auto;
+
+    &:not(:last-child){
+        margin-bottom: $gutter-vertical;
+    }
+
+    @include clearfix;
+
+    [class^="col-"]{
+        float: left;
+        padding: .5rem 1rem;
+        font-size: 1.6rem;
+
+        &:not(:last-child){
+            margin-right: $gutter-horizontal;
+        }
+    }
+
+    .col-1-of-2{
+        width: calc((100% - #{$gutter-horizontal}) / 2);
+    }
+
+
+
+    .col-1-of-3{
+        width: calc(100% (1.8 * ((100% - (2 * #{$gutter-horizontal-fake})) / 3) + #{$gutter-horizontal-fake}));
+    }
+    .col-2-of-3{
+        width: calc(1.8 * ((100% - (2 * #{$gutter-horizontal-fake})) / 3) + #{$gutter-horizontal-fake});
+    }
+
+
+
+    [class*="-real"]{
+        float: left;
+        padding: .5rem 1rem;
+        font-size: 1.6rem;
+
+        &:not(:last-child){
+            margin-right: $gutter-horizontal;
+        }
+    }
+
+    .col-1-of-3-real{
+        width: calc((100% - (2 * #{$gutter-horizontal})) / 3);
+        background-color:rgba($colour-primary-light,.2);
+    }
+    .col-2-of-3-real{
+        width: calc(2 * ((100% - (2 * #{$gutter-horizontal})) / 3) + #{$gutter-horizontal});
+        background-color:rgba($colour-primary-light,.2);
+    }
+
+
+
+
+
+
+    .col-1-of-4{
+        width: calc((100% - (3 * #{$gutter-horizontal})) / 4);
+    }
+    .col-2-of-4{
+        width: calc(2 * ((100% - (3 * #{$gutter-horizontal})) / 4) + #{$gutter-horizontal});
+    }
+    .col-3-of-4{
+        width: calc(3 * ((100% - (3 * #{$gutter-horizontal})) / 4) + (2 * #{$gutter-horizontal}));
+    }
+}
