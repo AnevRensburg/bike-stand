@@ -1,0 +1,167 @@
+/* Workshop palette: charcoal steel with the orange of the EE badge on the stand. */
+:root {
+  --ink: #16181b;
+  --ink-2: #1f2226;
+  --ink-3: #2b2f34;
+  --steel: #8a9099;
+  --line: #e3e1dc;
+  --paper: #f5f4f0;
+  --white: #ffffff;
+  --text: #1c1e21;
+  --muted: #5d636b;
+  --accent: #f26b1d;
+  --accent-dark: #c9520e;
+
+  --font-display: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+  --font-body: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+
+  --gutter: clamp(1rem, 4vw, 3rem);
+  --max-width: 1240px;
+  --radius: 18px;
+
+  color-scheme: light;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Keeps anchor targets clear of the sticky special banner. */
+  scroll-padding-top: 3rem;
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.005em;
+  line-height: 1;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+a {
+  color: inherit;
+}
+
+img {
+  max-inline-size: 100%;
+}
+
+:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+.container {
+  inline-size: 100%;
+  max-inline-size: var(--max-width);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.visually-hidden {
+  position: absolute !important;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.skip-link {
+  position: absolute;
+  inset-block-start: -100px;
+  inset-inline-start: 1rem;
+  z-index: 10;
+  padding: 0.5rem 1rem;
+  background: var(--white);
+  color: var(--ink);
+
+  &:focus {
+    inset-block-start: 1rem;
+  }
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  min-block-size: 3.25rem;
+  padding: 0.75rem 1.6rem;
+  border: 2px solid transparent;
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color 0.2s,
+    color 0.2s,
+    border-color 0.2s,
+    transform 0.2s;
+
+  &:hover {
+    transform: translateY(-1px);
+  }
+
+  &--accent {
+    background: var(--accent);
+    color: var(--white);
+
+    &:hover {
+      background: var(--accent-dark);
+    }
+  }
+
+  &--ghost {
+    border-color: rgb(255 255 255 / 0.35);
+    color: var(--white);
+
+    &:hover {
+      border-color: var(--white);
+    }
+  }
+}
+
+.eyebrow {
+  margin: 0 0 1rem;
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.section-title {
+  margin: 0 0 1.25rem;
+  font-size: clamp(2.25rem, 5vw, 3.5rem);
+}

@@ -1,14 +1,37 @@
 {
-  "name": "bikestand",
-  "version": "1.0.0",
-  "description": "Landing Page for a new product.",
-  "main": "index.js",
+  "name": "bike-stand",
+  "version": "0.0.0",
   "scripts": {
-    "compile:sass": "node-sass sass/main.scss css/style.css -w"
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build && node scripts/postbuild.mjs",
+    "serve:dist": "http-server dist/bike-stand/browser -p 8090 -c-1",
+    "images": "node scripts/optimize-images.mjs",
+    "format": "prettier --write \"src/**/*.{ts,html,scss}\" \"scripts/**/*.mjs\"",
+    "watch": "ng build --watch --configuration development"
   },
-  "author": "Ane",
-  "license": "ISC",
+  "private": true,
+  "packageManager": "npm@11.19.1",
+  "dependencies": {
+    "@angular/common": "^22.2.0",
+    "@angular/compiler": "^22.2.0",
+    "@angular/core": "^22.2.0",
+    "@angular/forms": "^22.2.0",
+    "@angular/platform-browser": "^22.2.0",
+    "@angular/platform-server": "^22.2.0",
+    "@angular/router": "^22.2.0",
+    "@angular/ssr": "^22.2.3",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0"
+  },
   "devDependencies": {
-    "node-sass": "^8.0.0"
+    "@angular/build": "^22.2.3",
+    "@angular/cli": "^22.2.3",
+    "@angular/compiler-cli": "^22.2.0",
+    "@types/node": "^22.12.0",
+    "http-server": "^14.1.1",
+    "prettier": "^3.8.1",
+    "sharp": "^0.35.5",
+    "typescript": "~6.0.2"
   }
 }

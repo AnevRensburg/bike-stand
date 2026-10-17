@@ -1,0 +1,264 @@
+<a class="skip-link" routerLink="/" fragment="order" queryParamsHandling="preserve"
+  >Skip to the order form</a
+>
+
+@if (special) {
+  <a class="promo" routerLink="/" fragment="order" queryParamsHandling="preserve">
+    <span class="promo__tag">Special</span>
+    <span
+      ><strong>{{ special }}</strong> · save {{ saving }}</span
+    >
+    <span class="promo__cta" aria-hidden="true">Order now →</span>
+  </a>
+}
+
+<header class="hero">
+  <div class="hero__inner container">
+    <nav class="hero__nav" aria-label="Main">
+      <a class="logo" href="./" aria-label="Home">
+        <svg viewBox="0 0 32 32" aria-hidden="true">
+          <circle cx="8" cy="21" r="6" />
+          <circle cx="24" cy="21" r="6" />
+          <path d="M8 21 13 10h8l3 11M13 10l5 11h-10M11 7h4" />
+        </svg>
+        Bike Stand
+      </a>
+      <ul>
+        <li><a routerLink="/" fragment="about" queryParamsHandling="preserve">The Stand</a></li>
+        <li><a routerLink="/" fragment="photos" queryParamsHandling="preserve">Photos</a></li>
+        <li><a routerLink="/" fragment="order" queryParamsHandling="preserve">Order</a></li>
+        <li><a routerLink="/" fragment="contact" queryParamsHandling="preserve">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="hero__grid">
+      <div class="hero__copy">
+        <p class="eyebrow">MTB &amp; eMTB bicycle stand</p>
+        <h1>Get your bike<br />off the ground.</h1>
+        <p class="hero__lead">
+          An innovative way to hold your mountain bike or e-mountain bike. It cradles the bike and
+          locks it upright, so both hands are free for the work.
+        </p>
+        <div class="hero__actions">
+          <a
+            class="button button--accent"
+            routerLink="/"
+            fragment="order"
+            queryParamsHandling="preserve"
+            >Order yours · {{ price }}</a
+          >
+          <a
+            class="button button--ghost"
+            routerLink="/"
+            fragment="photos"
+            queryParamsHandling="preserve"
+          >
+            <svg class="play" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+            Watch it in action
+          </a>
+        </div>
+      </div>
+
+      <div class="hero__media">
+        <app-picture
+          src="product/stand-bike"
+          alt="A blue and white e-mountain bike held upright on the stand"
+          sizes="(min-width: 960px) 620px, 100vw"
+          [priority]="true"
+        />
+      </div>
+    </div>
+
+    <ul class="specs" aria-label="At a glance">
+      @for (spec of specs; track spec.label) {
+        <li>
+          <strong>{{ spec.value }}</strong>
+          <span>{{ spec.label }}</span>
+        </li>
+      }
+    </ul>
+  </div>
+</header>
+
+<main>
+  <section id="about" class="about container" aria-labelledby="about-title">
+    <div class="about__intro">
+      <p class="eyebrow">The stand</p>
+      <h2 id="about-title" class="section-title">Built for the bike you ride</h2>
+      <p>
+        This Enduro Engineering MTB stand will fit almost all makes and models of eMTB and standard
+        MTB. It fits 26, 27.5 and 29 inch wheels up to 4.0 width. There are two adjustable portions
+        to set where the bike will be cradled and how high.
+      </p>
+      <p>This stand gets bikes off the ground and locks them in an upright position.</p>
+    </div>
+
+    <div class="about__perks">
+      <h3 class="perks-title">Works great for</h3>
+      <ul class="perks">
+        @for (perk of perks; track perk.title) {
+          <li class="perk">
+            <span class="perk__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                @switch (perk.icon) {
+                  @case ('chain') {
+                    <rect x="2" y="8" width="11" height="8" rx="4" />
+                    <rect x="11" y="8" width="11" height="8" rx="4" />
+                  }
+                  @case ('disc') {
+                    <circle cx="12" cy="12" r="9" />
+                    <circle cx="12" cy="12" r="2.5" />
+                    <path d="M12 4.5v2M12 17.5v2M4.5 12h2M17.5 12h2" />
+                  }
+                  @case ('gear') {
+                    <circle cx="12" cy="12" r="4" />
+                    <path
+                      d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9 7 7M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1"
+                    />
+                  }
+                  @case ('wrench') {
+                    <path
+                      d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94z"
+                    />
+                  }
+                  @case ('drop') {
+                    <path d="M12 2.7s-6 6.6-6 11a6 6 0 0 0 12 0c0-4.4-6-11-6-11z" />
+                  }
+                }
+              </svg>
+            </span>
+            <div>
+              <h4>{{ perk.title }}</h4>
+              <p>{{ perk.text }}</p>
+            </div>
+          </li>
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section id="photos" class="photos" aria-labelledby="photos-title">
+    <div class="container">
+      <p class="eyebrow">See it in action</p>
+      <h2 id="photos-title" class="section-title">Watch it work</h2>
+
+      <div class="video">
+        <iframe
+          [src]="videoUrl"
+          title="Enduro Engineering MTB stand"
+          loading="lazy"
+          allow="
+            accelerometer;
+            clipboard-write;
+            encrypted-media;
+            gyroscope;
+            picture-in-picture;
+            web-share;
+          "
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+        ></iframe>
+      </div>
+
+      <div class="gallery">
+        <figure class="gallery__item">
+          <app-picture
+            src="product/stand"
+            alt="The stand on its own, showing the curved wheel cradle and adjustable arm"
+            sizes="(min-width: 900px) 600px, 100vw"
+          />
+          <figcaption>The stand</figcaption>
+        </figure>
+        <figure class="gallery__item">
+          <app-picture
+            src="product/stand-bike"
+            alt="An e-mountain bike locked upright in the stand"
+            sizes="(min-width: 900px) 600px, 100vw"
+          />
+          <figcaption>With a bike on it</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="order" aria-labelledby="order-title">
+    <div class="order__inner container">
+      <div class="order__details">
+        <p class="eyebrow">Order now</p>
+        <h2 id="order-title" class="section-title">Order yours</h2>
+        <p class="order__price">
+          <span class="order__amount">{{ price }}</span>
+          <span>per stand</span>
+        </p>
+        @if (special) {
+          <p class="order__special"><strong>Special:</strong> {{ special }} (save {{ saving }})</p>
+        }
+
+        <ul class="order__info">
+          <li>
+            <strong>Fill in the form</strong> and it opens WhatsApp with your order typed out. Just
+            press Send.
+          </li>
+          <li><strong>We confirm on WhatsApp</strong> and send you the payment details.</li>
+          @if (courierFree) {
+            <li><strong>Free courier</strong> anywhere in South Africa.</li>
+          } @else {
+            <li><strong>Courier</strong> anywhere in South Africa.</li>
+          }
+          <li><strong>Or collect</strong> from us in Durbanville, Cape Town.</li>
+        </ul>
+      </div>
+
+      <div id="order" class="order__form" tabindex="-1">
+        <app-order-form />
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact" aria-labelledby="contact-title">
+    <div class="contact__image">
+      <app-picture
+        src="product/stand-bike"
+        alt="The bike stand holding an e-mountain bike"
+        sizes="(min-width: 900px) 50vw, 100vw"
+      />
+    </div>
+    <div class="contact__details">
+      <h2 id="contact-title" class="section-title">Get in touch</h2>
+
+      <div class="contact__block">
+        <h3>Address</h3>
+        <address>
+          @for (line of site.address; track line) {
+            {{ line }}<br />
+          }
+        </address>
+        <p class="contact__note">We courier all throughout South Africa.</p>
+      </div>
+
+      <div class="contact__block">
+        <h3>WhatsApp</h3>
+        <p>
+          <a [href]="'https://wa.me/' + site.whatsappNumber" target="_blank" rel="noopener">
+            {{ site.phoneDisplay }}
+          </a>
+        </p>
+      </div>
+
+      <div class="contact__block">
+        <h3>Email</h3>
+        <p>
+          <a [href]="'mailto:' + site.email">{{ site.email }}</a>
+        </p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p>© {{ year }} {{ site.copyrightHolder }}. Durbanville, Cape Town.</p>
+  </div>
+</footer>
